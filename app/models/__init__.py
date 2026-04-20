@@ -32,6 +32,7 @@ from app.models.report_export import ReportExport
 from app.models.ai_insight import AIInsight
 from app.models.audit_export import AuditExport
 from app.models.farm_setting import FarmSetting
+from app.models.dashboard_snapshot import DashboardSnapshot
 
 __all__ = [
     'User',
@@ -52,6 +53,7 @@ __all__ = [
     'AIInsight',
     'AuditExport',
     'FarmSetting',
+    'DashboardSnapshot',
     'Permission',
     'Plot',
     'Farm',

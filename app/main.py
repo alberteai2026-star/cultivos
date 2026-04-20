@@ -26,6 +26,7 @@ from app.api.v1.reports import router as reports_router
 from app.api.v1.ai import router as ai_router
 from app.api.v1.audit import router as audit_router
 from app.api.v1.settings import router as settings_router
+from app.api.v1.dashboard import router as dashboard_router
 from app.core.config import settings
 
 app = FastAPI(title=settings.app_name)
@@ -56,3 +57,4 @@ app.include_router(reports_router, prefix="/api/v1/reports", tags=["reports"])
 app.include_router(ai_router, prefix="/api/v1/ai", tags=["ai"])
 app.include_router(audit_router, prefix="/api/v1/audit", tags=["audit"])
 app.include_router(settings_router, prefix="/api/v1/settings", tags=["settings"])
+app.include_router(dashboard_router, prefix="/api/v1/dashboard", tags=["dashboard"])
