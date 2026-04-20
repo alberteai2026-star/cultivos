@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS ai_insights (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  farm_id BIGINT UNSIGNED NOT NULL,
+  plot_id BIGINT UNSIGNED NULL,
+  crop_cycle_id BIGINT UNSIGNED NULL,
+  insight_type VARCHAR(40) NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  recommendation TEXT NOT NULL,
+  predicted_value DECIMAL(14,2) NULL,
+  confidence DECIMAL(5,2) NULL,
+  priority VARCHAR(20) NOT NULL DEFAULT 'media',
+  generated_at DATETIME NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY idx_ai_insights_farm_id (farm_id),
+  KEY idx_ai_insights_plot_id (plot_id),
+  KEY idx_ai_insights_crop_cycle_id (crop_cycle_id),
+  KEY idx_ai_insights_type (insight_type),
+  CONSTRAINT fk_ai_insights_farm FOREIGN KEY (farm_id) REFERENCES farms(id),
+  CONSTRAINT fk_ai_insights_plot FOREIGN KEY (plot_id) REFERENCES plots(id),
+  CONSTRAINT fk_ai_insights_crop_cycle FOREIGN KEY (crop_cycle_id) REFERENCES crop_cycles(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
