@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS machines (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  farm_id BIGINT UNSIGNED NOT NULL,
+  name VARCHAR(120) NOT NULL,
+  machine_type VARCHAR(80) NULL,
+  plate_or_code VARCHAR(50) NULL,
+  status VARCHAR(30) NOT NULL DEFAULT 'disponible',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY idx_machines_farm_id (farm_id),
+  CONSTRAINT fk_machines_farm FOREIGN KEY (farm_id) REFERENCES farms(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

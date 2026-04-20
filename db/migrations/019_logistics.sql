@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS logistics_shipments (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  farm_id BIGINT UNSIGNED NOT NULL,
+  invoice_id BIGINT UNSIGNED NULL,
+  destination_name VARCHAR(150) NOT NULL,
+  transport_type VARCHAR(60) NULL,
+  driver_name VARCHAR(120) NULL,
+  vehicle_plate VARCHAR(30) NULL,
+  departure_at DATETIME NOT NULL,
+  arrival_at DATETIME NULL,
+  status VARCHAR(30) NOT NULL DEFAULT 'pendiente',
+  freight_cost DECIMAL(14,2) NULL,
+  notes TEXT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY idx_logistics_shipments_farm_id (farm_id),
+  KEY idx_logistics_shipments_invoice_id (invoice_id),
+  KEY idx_logistics_shipments_departure_at (departure_at),
+  CONSTRAINT fk_logistics_shipments_farm FOREIGN KEY (farm_id) REFERENCES farms(id),
+  CONSTRAINT fk_logistics_shipments_invoice FOREIGN KEY (invoice_id) REFERENCES invoices(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
