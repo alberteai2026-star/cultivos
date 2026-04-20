@@ -31,6 +31,7 @@ from app.models.market_offer import MarketOffer
 from app.models.report_export import ReportExport
 from app.models.ai_insight import AIInsight
 from app.models.audit_export import AuditExport
+from app.models.farm_setting import FarmSetting
 
 __all__ = [
     'User',
@@ -50,6 +51,7 @@ __all__ = [
     'ReportExport',
     'AIInsight',
     'AuditExport',
+    'FarmSetting',
     'Permission',
     'Plot',
     'Farm',
