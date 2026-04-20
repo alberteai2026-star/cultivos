@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS workers (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  farm_id BIGINT UNSIGNED NOT NULL,
+  full_name VARCHAR(150) NOT NULL,
+  document_id VARCHAR(50) NULL,
+  role_name VARCHAR(80) NULL,
+  daily_rate DECIMAL(12,2) NULL,
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY idx_workers_farm_id (farm_id),
+  CONSTRAINT fk_workers_farm FOREIGN KEY (farm_id) REFERENCES farms(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
