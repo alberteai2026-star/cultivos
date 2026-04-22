@@ -32,6 +32,8 @@ from app.models.market_listing import MarketListing
 from app.models.market_offer import MarketOffer
 from app.models.report_export import ReportExport
 from app.models.ai_insight import AIInsight
+from app.models.accounting_journal_entry import AccountingJournalEntry
+from app.models.accounting_journal_line import AccountingJournalLine
 from app.models.audit_export import AuditExport
 from app.models.farm_setting import FarmSetting
 from app.models.farm_setting_history import FarmSettingHistory
@@ -64,6 +66,8 @@ __all__ = [
     'MarketOffer',
     'ReportExport',
     'AIInsight',
+    'AccountingJournalEntry',
+    'AccountingJournalLine',
     'AuditExport',
     'FarmSetting',
     'FarmSettingHistory',

@@ -36,3 +36,51 @@ class FinanceSummaryOut(BaseModel):
     total_income: float
     total_cost: float
     net_result: float
+
+
+class JournalLineRequest(BaseModel):
+    account_code: str = Field(min_length=2, max_length=30)
+    account_name: str = Field(min_length=2, max_length=120)
+    debit: float = Field(default=0, ge=0)
+    credit: float = Field(default=0, ge=0)
+
+
+class JournalEntryCreateRequest(BaseModel):
+    farm_id: int
+    entry_date: datetime
+    reference: str | None = Field(default=None, max_length=80)
+    description: str | None = None
+    lines: list[JournalLineRequest] = Field(min_length=2)
+
+
+class JournalEntryOut(BaseModel):
+    id: int
+    farm_id: int
+    entry_date: datetime
+    reference: str | None
+    description: str | None
+    status: str
+    created_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class JournalEntryListResponse(BaseModel):
+    total: int
+    items: list[JournalEntryOut]
+
+
+class TrialBalanceLineOut(BaseModel):
+    account_code: str
+    account_name: str
+    total_debit: float
+    total_credit: float
+    balance: float
+
+
+class TrialBalanceResponse(BaseModel):
+    farm_id: int
+    entry_date_from: datetime | None
+    entry_date_to: datetime | None
+    total_accounts: int
+    items: list[TrialBalanceLineOut]

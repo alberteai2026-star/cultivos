@@ -21,7 +21,7 @@ Fecha de corte: **2026-04-21**.
 8. M29 — Seguimiento vehicular/GPS (parcial: tracking por despacho)
 9. M30 — Seguimiento empleados en campo (parcial: tracking por trabajador)
 10. M31 — Vigilancia y seguridad perimetral (parcial: incidentes)
-11. M32 — Contabilidad agrícola NIIF
+11. M32 — Contabilidad agrícola NIIF (parcial: diario y balance)
 
 ## 3) IoT (M28) detalle
 
@@ -179,3 +179,11 @@ Pendiente completar el DoD operativo global:
 - `GET /api/v1/security/incidents/{incident_id}` detalle de incidente autorizado.
 - `PATCH /api/v1/security/incidents/{incident_id}/status` cierre/actualización con traza de auditoría.
 - Pendiente: videoanalítica, integración CCTV y detección inteligente en tiempo real.
+
+
+## 19) Contabilidad NIIF (M32) avance parcial
+
+- `POST /api/v1/finance/journal-entries` registra asientos contables balanceados (debe = haber).
+- `GET /api/v1/finance/journal-entries` listado paginado de asientos por finca autorizada.
+- `GET /api/v1/finance/trial-balance` balance de comprobación por cuenta contable.
+- Pendiente: catálogo NIIF completo, cierre contable y estados financieros formales.
