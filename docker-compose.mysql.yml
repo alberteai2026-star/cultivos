@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: cultivos-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: cultivos
+      MYSQL_USER: cultivos
+      MYSQL_PASSWORD: cultivos123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3306:3306"
+    volumes:
+      - cultivos_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot123"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  cultivos_mysql_data:
