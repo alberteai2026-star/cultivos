@@ -48,6 +48,7 @@ Cada sprint tiene 2 semanas.
 
 ### Fase 6 — Avanzados y cierre corporativo (S35-S36 + hardening)
 - M27 SIG, M28 IoT, M29 GPS, M30 Tracking empleados, M31 Vigilancia, M32 NIIF.
+- Estado actual: implementación base disponible en M27-M32; pendiente hardening, cobertura operativa y cierre DoD.
 
 > Nota: Los módulos 27-32 pueden requerir 2-4 sprints adicionales de hardening.
 
@@ -56,20 +57,21 @@ Cada sprint tiene 2 semanas.
 ## 3.1 Checklist de avance (control de implementación)
 
 > Marcar con `[x]` cuando esté implementado y validado en `staging`.
-> Última actualización manual de este checklist: **2026-04-20**.
+> Última actualización manual de este checklist: **2026-04-22**.
 
-### Resumen rápido de avance (2026-04-20)
+### Resumen rápido de avance (2026-04-22)
 
 - Fases completas: **0/7**
-- Módulos completos: **21/32** (pendientes M22-M32)
+- Módulos completos: **21/32** (M22-M32 en estado parcial/pendiente de DoD operativo)
 - Sprints completos: **3/36** (S23, S24, S25)
 - Submódulos completos: **15/111**
+- Avance base reciente: M26 (KPIs+alertas), M27 (versionado SIG), M28 (reglas+válvulas), M29 (tracking por despacho), M30 (tracking trabajador), M31 (incidentes), M32 (diario + trial balance).
 
 ### Brecha principal pendiente
 
 1. **Analítica y gobierno:** M22, M23, M24, M25, M26.
-2. **Capacidades avanzadas:** M27, M28, M29, M30, M31, M32.
-3. **Cierre formal de calidad:** checklist DoD operativo global sin marcar.
+2. **Capacidades avanzadas (base implementada, falta hardening):** M27, M28, M29, M30, M31, M32.
+3. **Cierre formal de calidad:** checklist DoD operativo global sin marcar (staging/UAT/observabilidad/documentación).
 
 ### Estado por fase
 
@@ -394,8 +396,8 @@ Un módulo se considera listo cuando cumple:
 
 ### Bloque F — Avanzados y cierre (S35-S36)
 
-- [ ] **S35:** M27 SIG + M29 GPS + M30 tracking empleados.
-- [ ] **S36:** M28 IoT + M31 vigilancia + M32 NIIF + cierre de salida.
+- [ ] **S35:** M27 SIG + M29 GPS + M30 tracking empleados (base funcional implementada; foco en robustez, monitoreo y UAT).
+- [ ] **S36:** M28 IoT + M31 vigilancia + M32 NIIF + cierre de salida (base funcional implementada; foco en hardening y cierre DoD).
 
 ---
 
@@ -543,41 +545,41 @@ Un módulo se considera listo cuando cumple:
 - [ ] M25.S3 Integraciones API (DIAN/SIPSA/ICA/ERP)
 
 ### M26 — Dashboard
-- [ ] M26.S1 KPIs generales
-- [ ] M26.S2 Alertas consolidadas
+- [x] M26.S1 KPIs generales
+- [x] M26.S2 Alertas consolidadas
 - [ ] M26.S3 Estado de lotes
 
 ### M27 — Cartografía SIG
 - [ ] M27.S1 Capas satélite/OSM/NDVI
 - [ ] M27.S2 Polígonos editables
-- [ ] M27.S3 Exportación de mapas
+- [x] M27.S3 Historial/versionado de features
 
 ### M28 — IoT
 - [x] M28.S1 Registro de sensores
-- [ ] M28.S2 Lecturas en tiempo real
-- [ ] M28.S3 Reglas de automatización
-- [ ] M28.S4 Control de electroválvulas
+- [ ] M28.S2 Lecturas en tiempo real (base por polling + WebSocket; pendiente hardening)
+- [x] M28.S3 Reglas de automatización
+- [x] M28.S4 Control de electroválvulas
 
-> Nota técnica (2026-04-20): existe base IoT para alta de dispositivos, lecturas persistidas,
-> consulta de últimas lecturas (polling) y stream WebSocket básico. Falta robustecer tiempo
-> real (broadcast/event bus), reglas de automatización y control de actuadores.
+> Nota técnica (2026-04-22): existe base IoT para alta de dispositivos, lecturas persistidas,
+> consulta de últimas lecturas (polling), stream WebSocket básico, reglas y comandos de
+> actuadores. Falta robustecer tiempo real (broadcast/event bus), fiabilidad y operación productiva.
 
 ### M29 — Seguimiento vehicular
-- [ ] M29.S1 GPS en tiempo real
-- [ ] M29.S2 Historial de rutas
+- [x] M29.S1 GPS por despacho (tracking operativo base)
+- [x] M29.S2 Historial de rutas
 - [ ] M29.S3 Geocercas y alertas
 
 ### M30 — Seguimiento empleados
-- [ ] M30.S1 Check-in/Check-out georreferenciado
+- [x] M30.S1 Tracking georreferenciado por trabajador (base)
 - [ ] M30.S2 Offline y sincronización
 - [ ] M30.S3 Evidencias fotográficas
 
 ### M31 — Vigilancia
-- [ ] M31.S1 Cámaras IP
+- [x] M31.S1 Incidentes de seguridad perimetral (CRUD + estado)
 - [ ] M31.S2 Video en vivo y grabación
 - [ ] M31.S3 Alertas de intrusión
 
 ### M32 — NIIF
-- [ ] M32.S1 Modelo NIC 41/NIIF 13
-- [ ] M32.S2 Activos biológicos
-- [ ] M32.S3 Estados financieros agrícolas
+- [x] M32.S1 Asientos contables (diario) balanceados
+- [x] M32.S2 Balance de comprobación (trial balance)
+- [ ] M32.S3 Estados financieros agrícolas y modelo NIIF completo
